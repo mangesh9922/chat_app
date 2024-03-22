@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import { Button, Typography } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
-function Login() {
+function SignUp() {
   return (
     <div
       className='login'
@@ -30,7 +30,7 @@ function Login() {
       // sx={{ border: '2px solid grey' }}
       >
         <Typography variant='h6'>
-                Login here to continue
+                Sign Up here to continue
         </Typography>
         <Card
 
@@ -60,10 +60,10 @@ function Login() {
               <Button 
                 variant="contained"
               >
-                Login Now!
+                Sign Up Now!
               </Button>
               <Typography>
-                want to create new account? <a href="https://www.google.com/">Sign</a>
+                already have account? <a href="https://www.google.com/">Login</a>
               </Typography>
             </Stack>
           </CardContent>
@@ -73,4 +73,4 @@ function Login() {
   )
 }
 
-export default Login
+export default SignUp
