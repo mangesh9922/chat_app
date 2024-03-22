@@ -3,10 +3,25 @@ import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box'
-import { Button, Typography,Link } from '@mui/material';
+import { Button, Typography,Link, OutlinedInput, FormControl, Icon } from '@mui/material';
 import Stack from '@mui/material/Stack';
 // import {Link} from 'react-router-dom'
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import InputLabel from '@mui/material/InputLabel';
+import AccountCircle from '@mui/icons-material/AccountCircleSharp'
+// import {Link} from 'react-router-dom'
 function Login() {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  }
+
   return (
     <div
       className='login'
@@ -46,23 +61,46 @@ function Login() {
             sx={{ 
               '& .MuiTextField-root': {m:1, width: '28ch' },
               '& .MuiButton-root':{m: 1, width: '29ch'},
+              '& .MuiFormControl-root':{m: 1, width: '29ch'},
            }}
           >
             <Stack direction="column" spacing = {2}>
                 
-                <TextField
+            <FormControl>
+                <InputLabel>username</InputLabel>
+                <OutlinedInput
                   id="Username"
                   label="Username"
                   variant="outlined"
-                  
+                  endAdornment={
+                    <InputAdornment position ="end">
+                      <AccountCircle/>
+                    </InputAdornment>
+                  }
                 />
-
-                <TextField
+              </FormControl>
+              <FormControl>
+                <InputLabel >password
+                </InputLabel>
+                <OutlinedInput
                   id="Password"
                   label="Password"
                   variant="outlined"
-                  type='password'
+                  type={showPassword ? 'text' : 'password'}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
+              </FormControl>
 
                 <Button 
                   variant="contained"
