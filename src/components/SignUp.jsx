@@ -3,8 +3,9 @@ import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box'
-import { Button, Typography } from '@mui/material';
+import { Button, Typography,Link } from '@mui/material';
 import Stack from '@mui/material/Stack';
+// import {Link} from 'react-router-dom'
 
 function SignUp() {
   return (
@@ -29,7 +30,11 @@ function SignUp() {
       // p={2}
       // sx={{ border: '2px solid grey' }}
       >
-        <Typography variant='h6'>
+        <Typography 
+          variant='h6'
+          pb={8}
+          fontSize={35}
+        >
                 Sign Up here to continue
         </Typography>
         <Card
@@ -62,9 +67,29 @@ function SignUp() {
               >
                 Sign Up Now!
               </Button>
-              <Typography>
-                already have account? <a href="https://www.google.com/">Login</a>
+    
+            </Stack>
+
+            <br/>
+
+            <Stack direction="column" spacing={1}>
+            <Typography 
+                
+                align="center"
+              >
+                want to create new account? 
               </Typography>
+              {/* <Link to="/SignUp">SignUp</Link> */}
+
+              <Link 
+                href = "/"
+                underline='hover'
+                align = "center"
+                m="0"
+                p="0"
+              >
+                Login
+              </Link>
             </Stack>
           </CardContent>
         </Card>

@@ -3,9 +3,9 @@ import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box'
-import { Button, Typography } from '@mui/material';
+import { Button, Typography,Link } from '@mui/material';
 import Stack from '@mui/material/Stack';
-
+// import {Link} from 'react-router-dom'
 function Login() {
   return (
     <div
@@ -29,7 +29,11 @@ function Login() {
       // p={2}
       // sx={{ border: '2px solid grey' }}
       >
-        <Typography variant='h6'>
+        <Typography 
+          variant='h6'
+          pb={8}
+          fontSize={35}
+        >
                 Login here to continue
         </Typography>
         <Card
@@ -41,31 +45,54 @@ function Login() {
             justifyContent = "center"
             sx={{ 
               '& .MuiTextField-root': {m:1, width: '28ch' },
-              '& .MuiButton-root':{m: 1, width: '29ch'}
+              '& .MuiButton-root':{m: 1, width: '29ch'},
            }}
-          ><Stack direction="column" spacing = {2}>
-              
-              <TextField
-                id="Username"
-                label="Username"
-                variant="outlined"
+          >
+            <Stack direction="column" spacing = {2}>
                 
-              />
-              <TextField
-                id="Password"
-                label="Password"
-                variant="outlined"
-                type='password'
-              />
-              <Button 
-                variant="contained"
-              >
-                Login Now!
-              </Button>
-              <Typography>
-                want to create new account? <a href="https://www.google.com/">Sign</a>
-              </Typography>
+                <TextField
+                  id="Username"
+                  label="Username"
+                  variant="outlined"
+                  
+                />
+
+                <TextField
+                  id="Password"
+                  label="Password"
+                  variant="outlined"
+                  type='password'
+                />
+
+                <Button 
+                  variant="contained"
+                >
+                  Login Now!
+                </Button>
             </Stack>
+
+            <br/>
+
+            <Stack direction="column" spacing={1}>
+            <Typography 
+                
+                align="center"
+              >
+                want to create new account? 
+              </Typography>
+              {/* <Link to="/SignUp">SignUp</Link> */}
+
+              <Link 
+                href = "SignUp"
+                underline='hover'
+                align = "center"
+                m="0"
+                p="0"
+              >
+                Signup
+              </Link>
+            </Stack>
+
           </CardContent>
         </Card>
       </Box>
