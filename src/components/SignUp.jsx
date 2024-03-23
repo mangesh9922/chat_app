@@ -28,8 +28,9 @@ function SignUp() {
       height={"100vh"}
       width={"100vw"}
       bgcolor="lightgreen"
-      alignItems="center"
-      justifyContent="center">
+      // alignItems="center"
+      // justifyContent="center"
+      >
       <Box
         height={"97vh"}
         width={"98vw"}
