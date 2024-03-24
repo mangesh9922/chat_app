@@ -119,7 +119,7 @@ function SignUp() {
               {/* <Link to="/SignUp">SignUp</Link> */}
 
               <Link 
-                href = "/"
+                href = "Login"
                 underline='hover'
                 align = "center"
                 m="0"
