@@ -3,7 +3,8 @@ import TextField from '@mui/material/TextField'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box'
-import { Button, Typography,Link, OutlinedInput, FormControl, Icon } from '@mui/material';
+import { Button, Typography, Link, OutlinedInput, FormControl, Icon } from '@mui/material';
+import { setUsername, setPassword, setFcmToken, useUserState } from './Viewmodel';
 import Stack from '@mui/material/Stack';
 // import {Link} from 'react-router-dom'
 import InputAdornment from '@mui/material/InputAdornment';
@@ -20,7 +21,26 @@ function SignUp() {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+
   }
+  
+  const [state, updateState] = useUserState();
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+    updateState();
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    updateState();
+  };
+
+  const handleFcmTokenChange = (event) => {
+    setFcmToken(event.target.value);
+    updateState();
+  };
+
   return (
     <div
       className='login'
@@ -70,6 +90,7 @@ function SignUp() {
                   id="Username"
                   label="Username"
                   variant="outlined"
+
                   endAdornment={
                     <InputAdornment position ="end">
                       <AccountCircle/>
