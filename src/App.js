@@ -5,14 +5,16 @@ import SignUp from './components/SignUp';
 import initializeApp from './firebase'
 import messenging from './network/messenging'
 import Home from './components/Home';
+import Test from './test';
+import docRef from './test';
 // import { Component } from 'react';
 
 
 function App() {
   return (
     <div>
-      <Home/>
-     <Link 
+      {/* <Home/> */}
+     {/* <Link 
                 href = "Login"
                 underline='hover'
                 align = "center"
@@ -20,9 +22,9 @@ function App() {
                 p="0"
               >
                 Login
-              </Link>
-      
-          
+              </Link> */}
+      {/* <button href="test" >click here</button> */}
+          <button onClick={docRef}>click me</button>
    </div>
   );
 }

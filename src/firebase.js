@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore,collection, addDoc,connectFirestoreEmulator } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,4 +28,9 @@ if(!app){
   console.log({app});
 
 }
- export default app;
+
+export const db = getFirestore(app);
+connectFirestoreEmulator(db, '127.0.0.1', 8080);
+const usersCollection = collection(db, "Users")
+
+export default app;

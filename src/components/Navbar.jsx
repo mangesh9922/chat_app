@@ -8,8 +8,8 @@ function Navbar() {
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                       Chit-chat
                   </Typography>
-                  <Button color="inherit">Login</Button>
-                  <Button color="inherit">SignUp</Button>
+                  <Button color="inherit" href="Login">Login</Button>
+                  <Button color="inherit" href="SignUp">SignUp</Button>
 
               </Toolbar>
           </AppBar>
