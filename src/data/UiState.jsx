@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 // UI State
-export const uiState = {
+export let UiState = {
     username: '',
     password: '',
-    fcmToken: ''
+    fcmToken: 'Loading...'
 };
 

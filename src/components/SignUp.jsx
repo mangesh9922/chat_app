@@ -4,7 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Box from '@mui/material/Box'
 import { Button, Typography, Link, OutlinedInput, FormControl, Icon } from '@mui/material';
-import { setUsername, setPassword, setFcmToken, useUserState } from './Viewmodel';
+// import { setUsername, setPassword, setFcmToken, useUserState } from './Viewmodel';
 import Stack from '@mui/material/Stack';
 // import {Link} from 'react-router-dom'
 import InputAdornment from '@mui/material/InputAdornment';
@@ -24,22 +24,22 @@ function SignUp() {
 
   }
   
-  const [state, updateState] = useUserState();
+  // const [state, updateState] = useUserState();
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-    updateState();
-  };
+  // const handleUsernameChange = (event) => {
+  //   setUsername(event.target.value);
+  //   updateState();
+  // };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-    updateState();
-  };
+  // const handlePasswordChange = (event) => {
+  //   setPassword(event.target.value);
+  //   updateState();
+  // };
 
-  const handleFcmTokenChange = (event) => {
-    setFcmToken(event.target.value);
-    updateState();
-  };
+  // const handleFcmTokenChange = (event) => {
+  //   setFcmToken(event.target.value);
+  //   updateState();
+  // };
 
   return (
     <div

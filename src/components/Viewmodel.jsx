@@ -1,12 +1,15 @@
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
+import { fetchTokenData } from '../data/DateRepository'
+import { UiState } from '../data/UiState';
 // Encapsulated UI State and View Model Functions
-export const viewModel = (() => {
-    const [uiState, setUiState] = useState({
-        username: '',
-        password: '',
-        fcmToken: ''
-    });
+const ViewModel = () => {
+    const [uiState, setUiState] = useState(
+        {
+            username: '',
+            password: '',
+            fcmToken: 'Loading...'
+        }
+    );
 
     // const setUsername = (value) => {
     //     setUiState(prevState => ({
@@ -22,13 +25,47 @@ export const viewModel = (() => {
     //     }));
     // };
 
+    // const setFcmToken = (value) => {
+    //     //set the fcmToken here from dataRepo 
+    //     setUiState(prevState => ({
+    //         ...prevState,
+    //         fcmToken: value,
+    //     }));
+    //     // , () => {
+    //     console.log("fcmtoken in uiState: " + uiState.fcmToken + " value got: " + value);
+    
+    // };
+    
     const setFcmToken = (value) => {
-        //set the fcmToken here from dataRepo 
         setUiState(prevState => ({
             ...prevState,
-            fcmToken: value
-        }));
+            fcmToken: value,
+        }));       
     };
+    
+    useEffect(() => {
+        console.log("fcmtoken in uiState: " + uiState.fcmToken);
+    }, [uiState]); 
+
+    function fetchTokenUi() {
+        try {
+            // const token = fetchTokenData()
+            fetchTokenData().then(
+                (token) => {
+                    setFcmToken(token)
+                    console.log("successfully set token to ui state: " + uiState.fcmToken);
+                }
+            ).catch((err) => {
+                console.error("error in viewmodle for fcmToken:" + err)
+                setFcmToken(err)
+            });
+            
+        }
+        catch (err) {
+            setFcmToken("failed to get token")
+            console.error("failed to get token");
+        }
+    }
 
     const handleUsernameChange = (event) => {
         // setUsername(event.target.value);
@@ -52,8 +89,11 @@ export const viewModel = (() => {
 
     return {
         uiState,
+        fetchTokenUi,
         handleUsernameChange,
-        handlePasswordChange,
-        handleFcmTokenChange
+        handlePasswordChange    
+        // handleFcmTokenChange
     };
-})();
+};
+
+export default ViewModel;
