@@ -20,7 +20,6 @@ function App(
   const {fetchTokenUi,uiState} = ViewModel()
   React.useEffect(() => {
     fetchTokenUi();
-    // console.log(fetchTokenUi())
   }, [])
   // const uiState = ViewModel().uiState
 
@@ -32,7 +31,7 @@ function App(
   console.log("token is "+ uiState.fcmToken)
   return (
     <div>
-      <Home />
+      <Home {...uiState}/>
      {/* <Link 
                 href = "Login"
                 underline='hover'
