@@ -4,11 +4,7 @@ import { UiState } from '../data/UiState';
 // Encapsulated UI State and View Model Functions
 const ViewModel = () => {
     const [uiState, setUiState] = useState(
-        {
-            username: '',
-            password: '',
-            fcmToken: 'Loading...'
-        }
+        UiState
     );
 
     // const setUsername = (value) => {
@@ -33,37 +29,39 @@ const ViewModel = () => {
     //     }));
     //     // , () => {
     //     console.log("fcmtoken in uiState: " + uiState.fcmToken + " value got: " + value);
-    
+
     // };
-    
+
     const setFcmToken = (value) => {
         setUiState(prevState => ({
             ...prevState,
             fcmToken: value,
-        }));       
+        }));
     };
-    
+
     useEffect(() => {
         console.log("fcmtoken in uiState: " + uiState.fcmToken);
-    }, [uiState]); 
+    }, [uiState.fcmToken]);
 
     function fetchTokenUi() {
-        try {
-            // const token = fetchTokenData()
-            fetchTokenData().then(
-                (token) => {
-                    setFcmToken(token)
-                    console.log("successfully set token to ui state: " + uiState.fcmToken);
-                }
-            ).catch((err) => {
-                console.error("error in viewmodle for fcmToken:" + err)
-                setFcmToken(err)
-            });
-            
-        }
-        catch (err) {
-            setFcmToken("failed to get token")
-            console.error("failed to get token");
+        if(uiState.fcmToken=="Loading..."){
+            try {
+                // const token = fetchTokenData()
+                fetchTokenData().then(
+                    (token) => {
+                        setFcmToken(token)
+                        // console.log("successfully set token to ui state: " + uiState.fcmToken);
+                    }
+                ).catch((err) => {
+                    console.error("error in viewmodle for fcmToken:" + err)
+                    setFcmToken(err)
+                });
+
+            }
+            catch (err) {
+                setFcmToken("failed to get token : "+err)
+                console.error("failed to get token" + err);
+            }
         }
     }
 
@@ -91,7 +89,7 @@ const ViewModel = () => {
         uiState,
         fetchTokenUi,
         handleUsernameChange,
-        handlePasswordChange    
+        handlePasswordChange
         // handleFcmTokenChange
     };
 };

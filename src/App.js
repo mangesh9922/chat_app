@@ -14,13 +14,16 @@ import React from 'react';
 
 
 // ViewModel().fetchTokenUi();
+// const {uiState,handleUsernameChange} = ViewModel()
 function App(
-  
+  // {
+  //   uiState,handleUsernameChange
+  // }
 ) {
-  const {fetchTokenUi,uiState} = ViewModel()
+  const {uiState,fetchTokenUi,handleUsernameChange} = ViewModel()
   React.useEffect(() => {
     fetchTokenUi();
-  }, [])
+  }, [uiState])
   // const uiState = ViewModel().uiState
 
   // useEffect(() => {
@@ -31,7 +34,7 @@ function App(
   console.log("token is "+ uiState.fcmToken)
   return (
     <div>
-      <Home {...uiState}/>
+      <Home uiState={uiState} onUsernameChange={handleUsernameChange}/>
      {/* <Link 
                 href = "Login"
                 underline='hover'

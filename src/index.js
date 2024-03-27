@@ -15,20 +15,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-
+// const {fetchTokenUi} = ViewModel()
+// fetchTokenUi()
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path='/' element={<App /*uiState={ ViewModel().uiState}*/ />}/>
+      <Route path='/' element={<App /*uiState = {uiState} handleUsernameChange={handleUsernameChange}*/ />}/>
     <Route path='/Login' element={ <Login />}/>
     <Route path='/SignUp' element={<SignUp />} />
     {/* <Route path='/test' element={test} /> */}
-
     </>
-    
-
-
   )
 );
 const root = ReactDOM.createRoot(document.getElementById('root'));
